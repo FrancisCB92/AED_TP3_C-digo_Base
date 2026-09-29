@@ -55,7 +55,7 @@ r9 = -1.0   # Mayor importe final
 
 # Variables para r10 (Porcentaje alta complejidad > promedio general)
 monto_base_menor_compl = 0
-cant_alta_complejidad = 0
+cant_alta_complejidad = 0>
 cant_alta_comp_mayor_prom = 0
 
 # Variables auxiliares para calcular el promedio general de TODOS los tratamientos
@@ -66,7 +66,7 @@ acum_monto_general = 0
 # necesitamos calcular ese promedio general primero. Al no poder usar arreglos, leeremos el archivo dos veces.
 
 # --- PASO 1: Calcular el Promedio General de todos los tratamientos ---
-txt = open("tratamientos.txt", "r")
+txt = open("tratamientos.txt", "r")>
 
 while True:
     linea = txt.readline()
