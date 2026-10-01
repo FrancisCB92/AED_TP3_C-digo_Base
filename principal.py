@@ -35,19 +35,20 @@ def principal():
     v = []
 
     # Bucle principal del menú: se repite hasta seleccionar la opción 3.
-    while op != 3:
+    while op != 0:
         print("1. Cargar Tratamientos")
         print("2. Mostrar Resultados")
-        print("3. Salir")
+        print("0. Salir")
 
-        op = int(input("Ingrese número de opción: "))
+        op = int(input("Ingrese opción:"))
 
         if op == 1:
             print("opcion 1 seleccionada")
             CartaTratamientos()
 
-        elif op == 2:
-            print("opcion 2 seleccionada")
+        if op == 2:
+            print("opción 2 seleccionada")
+
 
 if __name__ == "__main__":
     principal()

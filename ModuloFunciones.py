@@ -1,5 +1,7 @@
-
-# [*] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas
+# PENDIENTERS
+# [ ] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas}
+# [ ] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas
+# [ ] falta "control de ejecución mediante la variable __name__"
 
 # def CalcularPorcExtraNormal ()
 
