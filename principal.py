@@ -1,8 +1,12 @@
 import ModuloFunciones
 
+""" PENDIENTES
+[ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos, la estrutura de
+ datos principal es el vector: hay que modificar el "ModuloFunciones.py"
 
-# [ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos, la estrutura de
-# datos principal es el vector: hay que modificar el "ModuloFunciones.py"
+[ ] hay que cambiar la función strip() de CartaTratamientos, posiblemente se quejen, recien aparece en la FICHA 26 y no hay ejemplos de
+de uso de archivos con formato csv.
+"""
 
 
 # tema de lo que se puede usar y lo que no, hasta ficha 21: estructura básica tomada de los parciales y ejemplos de las fichas
@@ -13,7 +17,7 @@ def CartaTratamientos():
     print("función de opción 1 carga de tratamientos")
     m = open("tratamientos_prueba.cvs")
 
-    # para leer linea por línea y asignar los valores en variables (¿se puede usar la función strip?)
+    # para leer linea por línea y asignar los valores en variables
     for linea in m:
         fila= (linea.strip())
         print(fila)

@@ -3,7 +3,6 @@
 
 # def CalcularPorcExtraNormal ()
 
-
 """
 Si el monto_base es menor o igual a 60000, entonces
 porcentaje_extra = 0.
@@ -16,6 +15,7 @@ Sea monto_final = monto_base + porcentaje_extra + suma_fija.
 Si el tratamiento NO es de alta complejidad, la
 suma fija debe quedar en 0. Lo mismo vale si
 es de alta complejidad pero el ICD10 es “U”.
+
 """
 
 def Algoritmo1 (monto_base, alta_complejidad, ICD10):
