@@ -1,11 +1,19 @@
 import ModuloFunciones
 
 
+# [ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos, la estrutura de
+# datos principal es el vector: hay que modificar el "ModuloFunciones.py"
 
+
+# tema de lo que se puede usar y lo que no, hasta ficha 21: estructura básica tomada de los parciales y ejemplos de las fichas
+# No queda clara la consigna cuando dice
+# """Si el código de algoritmo informado para un tratamiento en el archivo csv NO ESTÁ en esta tabla, entonces el monto final
+# para ese tratamiento debe ser calculado en forma normal, de acuerdo a lo indicado en el TP2.""
 def CartaTratamientos():
     print("función de opción 1 carga de tratamientos")
     m = open("tratamientos_prueba.cvs")
 
+    # para leer linea por línea y asignar los valores en variables (¿se puede usar la función strip?)
     for linea in m:
         fila= (linea.strip())
         print(fila)
@@ -19,10 +27,13 @@ def CartaTratamientos():
 def principal():
     op = -1
 
-    # Bucle principal del menú: se repite hasta seleccionar la opción 5.
-    while op != 5:
+    # es una lista vacia "[]" para listas!, es la estructura de datos princiapal
+    v = []
+
+    # Bucle principal del menú: se repite hasta seleccionar la opción 3.
+    while op != 3:
         print("1. Cargar Tratamientos")
-        print("2. Mostrar ordenado")
+        print("2. Mostrar Resultados")
         print("3. Salir")
 
         op = int(input("Ingrese número de opción: "))
@@ -34,8 +45,5 @@ def principal():
         elif op == 2:
             print("opcion 2 seleccionada")
 
-
-
-# Si este archivo se ejecuta directamente, comienza la aplicación.
 if __name__ == "__main__":
     principal()
