@@ -1,9 +1,11 @@
 
 # [*] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas
+
 # def CalcularPorcExtraNormal ()
 
-# Algoritmo 1
-"""Si el monto_base es menor o igual a 60000, entonces
+
+"""
+Si el monto_base es menor o igual a 60000, entonces
 porcentaje_extra = 0.
 Si el monto_base es mayor a 60000, entonces:
     - Calcular porcentaje_extra en forma normal.
@@ -15,6 +17,7 @@ Si el tratamiento NO es de alta complejidad, la
 suma fija debe quedar en 0. Lo mismo vale si
 es de alta complejidad pero el ICD10 es “U”.
 """
+
 def Algoritmo1 (monto_base, alta_complejidad, ICD10):
     porcentaje_extra = 0
     suma_fija = 0
@@ -30,7 +33,8 @@ def Algoritmo1 (monto_base, alta_complejidad, ICD10):
 
 
 
-"""Si la letra del ICD10 está entre “A” y “P” (ambas incluidas), entonces
+"""
+Si la letra del ICD10 está entre “A” y “P” (ambas incluidas), entonces
 porcentaje_extra = cálculo normal sin importar la complejidad del
 tratamiento.
 Para todo otro ICD10:
@@ -40,7 +44,8 @@ Para todo otro ICD10:
     Sino (el tratamiento NO es de alta complejidad):
         - El porcentaje_extra debe ser igual al 15% del monto base en
         todos los casos.
-Sea monto_final = monto_base + porcentaje_extra"""
+Sea monto_final = monto_base + porcentaje_extra
+"""
 
 def Algoritmo2 (monto_base, alta_complejidad, ICD10):
     porcentaje_extra = 0
@@ -63,7 +68,8 @@ def Algoritmo2 (monto_base, alta_complejidad, ICD10):
 
 
 
-"""Sea monto_extra = 0
+"""
+Sea monto_extra = 0
 Si el tratamiento es de alta complejidad, entonces:
     - Calcular el monto_extra como el 30% del monto base
 Sin importar la complejidad, adicionar al monto_extra los siguientes
