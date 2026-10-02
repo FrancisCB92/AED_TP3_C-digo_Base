@@ -15,7 +15,7 @@ de uso de archivos con formato csv.
 """
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
-def r1_2 (v):
+def r1_2(v):
     contador_r1_2 = 0
     for t in v:
         if t.ContTratamAComplejidad():
@@ -32,19 +32,19 @@ import ModuloClase
 
 def CartaTratamientos():
     print("función de opción 1 carga de tratamientos")
-    cantidad_filas = -1
+    cantidad_tratamientos = -1
     m = open("tratamientos_prueba.cvs")
     v = [] # vector vacío, sin longitud, usamos el metodo append()
 
     # para leer linea por línea y asignar los valores en variables y luego crear el objeto instanciado
     # desde la clase del módulo importado "ModuloClase.py"
     for linea in m:
-        cantidad_filas += 1
+        cantidad_tratamientos += 1
         #fila = linea
         # cambiar la función split() probablemente no se puede usar, no está en las fichas
         dni, nombre, apellido, icd10, monto, complejidad, id_alg = linea.split(",")
 
-        v.append(ModuloClase.Tratamiento(cantidad_filas, dni, nombre, apellido, icd10, monto, complejidad, id_alg))
+        v.append(ModuloClase.Tratamiento(cantidad_tratamientos, dni, nombre, apellido, icd10, monto, complejidad, id_alg))
 
     # dos ejemplos que muestran las dos primeras fijas ya como objetos dentro de vector que pide la consigna
     # llama al metodo especial __str__ para imprimir por  (de los modelos del Parcial3)
@@ -52,8 +52,8 @@ def CartaTratamientos():
     #print(v[2])
 
     # el primer resultado: cantidad de tratamientos cargados
-    r1_1 = cantidad_filas
-    return (r1_1, v)
+    r1_1 = cantidad_tratamientos
+    return r1_1, v
 
 
 
