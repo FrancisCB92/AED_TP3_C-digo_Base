@@ -8,7 +8,8 @@
 
 class Tratamiento:
     # Constructor: inicializa los atributos del objeto al crearlo.
-    def __init__(self, dni, nombre, apellido, icd10, monto, complejidad, id_alg):
+    def __init__(self, id, dni, nombre, apellido, icd10, monto, complejidad, id_alg):
+        self.id = id
         self.dni = dni
         self.nombre = nombre
         self.apellido = apellido
@@ -22,6 +23,7 @@ class Tratamiento:
     # Metodo especial __str__: devuelve una cadena legible para imprimir el objeto.
     def __str__(self):
         r = ""
+        r += "\nid: " + str(self.id)
         r += "\ndni: "+ str(self.dni)
         r += "\nnombre: " + self.nombre
         r += "\napellido: " + self.apellido
@@ -32,6 +34,11 @@ class Tratamiento:
         return r
 
 
+    def ContTratamAComplejidad(self):
+        if self.complejidad == "A":
+            return True
+        else:
+            return False
 
 
 
