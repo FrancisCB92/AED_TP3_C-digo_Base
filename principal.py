@@ -31,11 +31,16 @@ def r1_2(v):
             return (t.apellido)
     return False
 
-def CalMontoFinal(tratamiento):
-    ModuloTP1.principal()
 
+# acá calculo normal que remite al ModuloTP1
+def calculonormal(tratamiento):
+    #ModuloTP1.principal()
+    print("falta programar el cálculo normal")
+
+# el punto r2.1
 def r2_1(monto_base, monto_final):
     r21 = 0
+    print("falta")
 
 
 

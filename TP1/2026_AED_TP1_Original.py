@@ -2,7 +2,6 @@
 beneficiario = input("Agrega Beneficiario: ")
 codigo = input("Codigo: ")
 base = int(input("Base "))
-capitulo = ""
 
 # Extraer datos del código
 letra = codigo[0]
@@ -13,9 +12,9 @@ porcentaje = int(parte_decimal)
 monto = base + 25000
 
 # punto b)
-if "A" <= letra <= "L":
+if letra >= "A" and letra <= "L":
     monto += 25000
-elif "M" <= letra <= "Z" and letra != "U":
+elif letra >= "M" and letra <= "Z" and letra != "U":
     monto += 40000
 elif letra == "U":
     monto += 100000

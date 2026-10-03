@@ -1,7 +1,6 @@
-# Entrada de datos
-"""beneficiario = input("Agrega Beneficiario: ")
-codigo = input("Codigo: ")
-base = int(input("Base "))
+"""
+[] errores de sintaxis ya no tiene, hay que prerapar pruebas, para testear la lógica
+
 """
 
 beneficiario = ""
@@ -12,6 +11,7 @@ capitulo = ""
 
 # Extraer datos del código y determinar capítulo
 def ExtraerDatosCodigo(codigo):
+
     letra = codigo[0]
     parte_decimal = codigo[4:]
     porcentaje = int(parte_decimal)
@@ -26,7 +26,7 @@ def sumafijapuntoa(monto):
 
 # punto b)
 def sumafijapuntob(letra, monto):
-    if "A" <= letra <= "L":
+    if letra >= "A" and letra <= "L":
         monto += 25000
     elif "M" <= letra <= "Z" and letra != "U":
         monto += 40000
@@ -81,7 +81,7 @@ def principal(Cod_ICD10, monto_base):
     #a. Monto fijo que se agrega al base para todos los tratamientos: 25000 pesos.
     monto = sumafijapuntoa(base)
 
-    monto = sumafijapuntob(monto, letra)
+    monto = sumafijapuntob(letra, monto)
 
     monto_final = aplicarporcentaje(monto, porcentaje)
 
@@ -94,7 +94,7 @@ def principal(Cod_ICD10, monto_base):
     print("Capitulo:", numcapitulo)
     print("Monto a pagar:", monto_final)
 
-    return beneficiario, codigo, capitulo, monto_final
+    return codigo, monto_final
 
 if __name__ == "__main__":
     # Único punto de arranque si se ejecuta este archivo directamente, los valores son de ejemplo
