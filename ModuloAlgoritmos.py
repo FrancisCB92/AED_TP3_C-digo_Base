@@ -1,5 +1,6 @@
 # [ ] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas}
 # [ ] calculo de porcentaje extra NORMAL? es una función aparte o del TP2?? ver consignas
+# [ ] falta control de ejecución con variable __name__
 
 
 
@@ -28,18 +29,18 @@ LA CONSIGNA:
         es de alta complejidad pero el ICD10 es “U”.
 """
 
-def Algoritmo1 (monto_base, alta_complejidad, ICD10):
+def Algoritmo1 (alta_complejidad, monto_base, ICD10):
     suma_fija = 0
     if monto_base > 60000:
-        # calculo normal, llama a la función del ModuloTP1
-        porcentaje_extra = ModuloTP1.principal(ICD10, monto_base)
-        print("calculo % extra normal")
+
+        # porcentaje_extra = calculonormal() FALTA
+
+
         if alta_complejidad and ICD10[0] != "U":
             suma_fija = monto_base/2
     else:
         porcentaje_extra = 0
 
-    # el razonamiento: no se suma el N° del % sino el monto que surge de aplicar el %
     monto_porcentaje = aplicaporcentaje(monto_base, porcentaje_extra)
 
     monto_final = monto_base + monto_porcentaje + suma_fija
@@ -61,17 +62,19 @@ LA CONSIGNA:
         Sea monto_final = monto_base + porcentaje_extra
 """
 
-def Algoritmo2 (monto_base, alta_complejidad, ICD10):
+def Algoritmo2 (alta_complejidad, monto_base, ICD10):
 
     if "A" <= ICD10[0] <= "P":
-        porcentaje_extra = ModuloTP1.principal(ICD10, monto_base)
+        print("Falta % normal")
+        # porcentaje_extra = calculonormal() FALTA
     else:
         if alta_complejidad:
             porcentaje_extra = 2* int(ICD10[4:])
-        else:
-            porcentaje_extra = (monto_base* 15)/100
 
-    # el razonamiento: no se suma el N° del % sino el monto que surge de aplicar el %
+        else:
+            porcentaje_extra = aplicaporcentaje(monto_base* 15)
+
+
     monto_porcentaje = aplicaporcentaje(monto_base, porcentaje_extra)
 
     monto_final = monto_base + monto_porcentaje
@@ -100,14 +103,14 @@ LA CONSIGNA:
 def Algoritmo3 (alta_complejidad, monto_base, ICD10):
     monto_extra = 0
     if alta_complejidad:
-        monto_extra = aplicaporcentaje(monto_base, 30)
+        print("Falta % normal")
+        # porcentaje_extra = calculonormal() FALTA
 
     if "A" <= ICD10[0] <= "L":
         monto_extra = monto_extra + 20000
     elif "M" <= ICD10[0] <= "P":
-        # bloque ICD10 son los numeros después de la letra y antes del punto
+        # bloque ICD10: ''... son los numeros después de la letra y antes del punto...'' (en grupo de Whatsapp)
         monto_extra = monto_extra + 15000 + 5000 * int(ICD10[1:3])
-        print("no se entiende la consigna")
     else:
         monto_extra = aplicaporcentaje(monto_base, 10)
 
@@ -115,3 +118,8 @@ def Algoritmo3 (alta_complejidad, monto_base, ICD10):
         monto_extra = 60000
 
     return monto_extra
+
+if __name__ == "__main__":
+    Algoritmo1(True, 37212.07, "C16.6")
+    Algoritmo2(False, 35248.57, "M15.2")
+    Algoritmo3(True, 29659.55, "F30.7")

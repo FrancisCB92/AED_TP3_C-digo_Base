@@ -16,15 +16,10 @@ en la FICHA 26 y no hay ejemplo. No encuentro usos de archivos con formato csv e
 
 # importamos los módulos
 import ModuloClase
-import ModuloTP1
 
 
-# acá calculo normal que remite al ModuloTP1
-def calculonormal(tratamiento):
-    codigo = tratamiento.icd10
-    monto_base = tratamiento.monto
-    monto_final_normal = ModuloTP1.principal(codigo, monto_base)
-    return monto_final_normal
+
+
 
 
 def CartaTratamientos():

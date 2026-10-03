@@ -94,7 +94,7 @@ def principal(Cod_ICD10, monto_base):
     print("Capitulo:", numcapitulo)
     print("Monto a pagar:", monto_final)
 
-    return codigo, monto_final
+    return monto_final
 
 if __name__ == "__main__":
     # Único punto de arranque si se ejecuta este archivo directamente, los valores son de ejemplo
