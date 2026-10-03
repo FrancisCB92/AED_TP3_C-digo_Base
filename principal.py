@@ -19,24 +19,12 @@ import ModuloClase
 import ModuloTP1
 
 
-
-
-
-
-
 # acá calculo normal que remite al ModuloTP1
 def calculonormal(tratamiento):
     codigo = tratamiento.icd10
     monto_base = tratamiento.monto
     monto_final_normal = ModuloTP1.principal(codigo, monto_base)
     return monto_final_normal
-
-
-
-
-
-
-
 
 
 def CartaTratamientos():
@@ -83,9 +71,9 @@ def r1_2(v):
     return False
 
 # el punto r2.1
-def r2_1(monto_base, monto_final):
+def r2_1(v, montos_base, montos_finales):
     r21 = 0
-    print("falta")
+    print("hay que terminar con los algoritmos de calculo de montos finales antes")
 
 
 # Función principal del menú de opciones del programa: se ejecuta esta primero por el control
