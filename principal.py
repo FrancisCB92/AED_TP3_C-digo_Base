@@ -1,17 +1,15 @@
 """ PENDIENTES
-[ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos, la estrutura de
- datos principal es el vector: hay que modificar el "ModuloClase.py"
-
-[ ] hay que cambiar la función strip() de CartaTratamientos, posiblemente se quejen, recien aparece en la FICHA 26 y no hay ejemplos de
-de uso de archivos con formato csv.
-
-
-
-[ ] tema de lo que se puede usar y lo que no, hasta ficha 21: estructura básica tomada de los parciales y ejemplos de las fichas
-[ ] Hay que buscar una alternativa a la función.split(), no aparece en las fichas
+[ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos
+[ ] hay que cambiar la función strip() de CartaTratamientos, posiblemente se quejen, porque recien se usa
+en la FICHA 26 y no hay ejemplo. No encuentro usos de archivos con formato csv en las fichas.
+[ ] tema de lo que se puede usar y lo que no, hasta ficha 21: estructura básica tomada de los parciales
+ y ejemplos de las fichas
 [ ] No queda clara la consigna cuando dice:
-        Si el código de algoritmo informado para un tratamiento en el archivo csv NO ESTÁ en esta tabla, entonces el monto final
-        para ese tratamiento debe ser calculado en forma normal, de acuerdo a lo indicado en el TP2.""
+        Si el código de algoritmo informado para un tratamiento en el archivo csv NO ESTÁ en esta tabla,
+        entonces el monto final para ese tratamiento debe ser calculado en forma normal,
+        de acuerdo a lo indicado en el TP2.
+[] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones?
+""
 """
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
@@ -25,6 +23,11 @@ def r1_2(v):
             return (t.apellido)
     return False
 
+def CalMontoFinal(tratamiento):
+    
+
+def r2_1(monto_base, monto_final):
+    r21 = 0
 
 
 
@@ -44,7 +47,14 @@ def CartaTratamientos():
         # cambiar la función split() probablemente no se puede usar, no está en las fichas
         dni, nombre, apellido, icd10, monto, complejidad, id_alg = linea.split(",")
 
-        v.append(ModuloClase.Tratamiento(cantidad_tratamientos, dni, nombre, apellido, icd10, monto, complejidad, id_alg))
+        v.append(ModuloClase.Tratamiento(cantidad_tratamientos,
+                                         dni,
+                                         nombre,
+                                         apellido,
+                                         icd10,
+                                         monto,
+                                         complejidad,
+                                         id_alg))
 
     # dos ejemplos que muestran las dos primeras fijas ya como objetos dentro de vector que pide la consigna
     # llama al metodo especial __str__ para imprimir por  (de los modelos del Parcial3)
@@ -54,7 +64,6 @@ def CartaTratamientos():
     # el primer resultado: cantidad de tratamientos cargados
     r1_1 = cantidad_tratamientos
     return r1_1, v
-
 
 
 
