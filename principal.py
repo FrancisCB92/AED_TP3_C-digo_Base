@@ -9,8 +9,16 @@ en la FICHA 26 y no hay ejemplo. No encuentro usos de archivos con formato csv e
         entonces el monto final para ese tratamiento debe ser calculado en forma normal,
         de acuerdo a lo indicado en el TP2.
 [] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones?
+
+--el ModuloTP1 es para adaptar los calculos de ese TP a esta trabajo practico, adaptandolo: doble testeo
 ""
 """
+
+# importamos los módulos
+import ModuloClase
+import ModuloTP1
+
+
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
 def r1_2(v):
@@ -24,14 +32,14 @@ def r1_2(v):
     return False
 
 def CalMontoFinal(tratamiento):
-    
+    ModuloTP1.principal()
 
 def r2_1(monto_base, monto_final):
     r21 = 0
 
 
 
-import ModuloClase
+
 
 def CartaTratamientos():
     print("función de opción 1 carga de tratamientos")

@@ -1,92 +1,103 @@
 # Entrada de datos
-beneficiario = input("Agrega Beneficiario: ")
+"""beneficiario = input("Agrega Beneficiario: ")
 codigo = input("Codigo: ")
 base = int(input("Base "))
+"""
+
+beneficiario = ""
+codigo = ""
+base = 0
 capitulo = ""
 
-# Extraer datos del código
-letra = codigo[0]
-parte_decimal = codigo[4:]
-porcentaje = int(parte_decimal)
+
+# Extraer datos del código y determinar capítulo
+def ExtraerDatosCodigo(codigo):
+    letra = codigo[0]
+    parte_decimal = codigo[4:]
+    porcentaje = int(parte_decimal)
+    numcapitulo = int(codigo[1:3])
+    return letra, parte_decimal, porcentaje, numcapitulo
+
 
 # punto a) Cálculo del monto
-monto = base + 25000
+def sumafijapuntoa(monto):
+    monto = base + 25000
+    return monto
 
 # punto b)
-if "A" <= letra <= "L":
-    monto += 25000
-elif "M" <= letra <= "Z" and letra != "U":
-    monto += 40000
-elif letra == "U":
-    monto += 100000
+def sumafijapuntob(letra, monto):
+    if "A" <= letra <= "L":
+        monto += 25000
+    elif "M" <= letra <= "Z" and letra != "U":
+        monto += 40000
+    elif letra == "U":
+        monto += 100000
+    return monto
 
-# Determinar capítulo
-num = int(codigo[1:3])
+
 
 # Aplicar porcentaje
-monto_final = monto + (monto * porcentaje / 100)
-# mitad_base = monto * 50 / 100
+def aplicarporcentaje(monto, porcentaje):
+    monto_final = monto + (monto * porcentaje / 100)
+    return monto_final
 
-if letra == "A" or letra == "B":
-    capitulo = "Capitulo I Ciertas enfermedades infecciosas y parasitarias"
-elif letra == "C" or (letra == "D" and num <= 48):
-    capitulo = "Capitulo II Tumores [neoplasias]"
-elif letra == "D" and num >= 50:
-    capitulo = "Capitulo III Enfermedades de la sangre y de los órganos hematopoyéticos, y ciertos trastornos que afectan el mecanismo de la inmunidad "
-elif letra == "E":
-    capitulo = "Capitulo IV  Enfermedades endocrinas, nutricionales y metabólicas"
-    if num > 5:
-        mitad_base = base * 50 / 100
-        monto_descuento = (monto_final * 37 / 100)
-        if monto_descuento > mitad_base:
-            monto_final = monto_final - monto_descuento
 
-elif letra == "F":
-    capitulo = "Capitulo V Trastornos mentales y del comportamiento"
-    if num % 2 != 0:
-        mitad_base = base * 50 / 100
-        monto_descuento = (monto_final * 45 / 100)
-        if monto_descuento > mitad_base:
-            monto_final = monto_final - monto_descuento
+# esta es la adaptación de la determinación del capítulo: no lo necesitamos para este TP3, pero
+# la consigna extra del TP1 incluía modificacines en el calculo del monto final en dos capitulos "E" y "F"
+def consignaextra(letra, numcapitulo, monto_final):
 
-elif letra == "G":
-    capitulo = "Capitulo VI Enfermedades del sistema nervioso"
-elif letra == "H" and num <= 59:
-    capitulo = "Capitulo VII Enfermedades del ojo y sus anexos "
-elif letra == "H" and num >= 60:
-    capitulo = "Capitulo VIII Enfermedades del oído y de la apófisis mastoides"
-elif letra == "I":
-    capitulo = "Capitulo IX Enfermedades del sistema circulatorio"
-elif letra == "J":
-    capitulo = "Capitulo X Enfermedades del sistema respiratorio"
-elif letra == "K":
-    capitulo = "Capitulo XI Enfermedades del sistema digestivo"
-elif letra == "L":
-    capitulo = "Capitulo XII Enfermedades de la piel y del tejido subcutáneo"
-elif letra == "M":
-    capitulo = "Capitulo XIII Enfermedades del sistema osteomuscular y del tejido conjuntivo"
-elif letra == "N":
-    capitulo = "Capitulo XIV Enfermedades del sistema genitourinario"
-elif letra == "O":
-    capitulo = "Capitulo XV Embarazo, parto y puerperio"
-elif letra == "P":
-    capitulo = "Capitulo XVI Ciertas afecciones originadas en el período perinatal"
-elif letra == "Q":
-    capitulo = "Capitulo XVII Malformaciones congénitas, deformidades y anomalías cromosómicas"
-elif letra == "R":
-    capitulo = "Capitulo XVIII  Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte"
-elif letra == "S" or letra == "T":
-    capitulo = "Capitulo XIX Traumatismos, envenenamientos y algunas otras consecuencias de causas externas "
-elif letra == "V" or letra == "W" or letra == "X" or letra == "Y":
-    capitulo = "Capitulo XX Causas externas de morbilidad y de mortalidad"
-elif letra == "Z":
-    capitulo = "Capitulo XXI Factores que influyen en el estado de salud y contacto con los servicios de salud"
-elif letra == "U":
-    capitulo = "Capitulo XXII Códigos para propósitos especiales"
+    # la letra fue extraida con ExtraerDatosCodigo y luego se usa para determinar si
+    # hay que seguir modificando el monto final (consigna extra de la entrega)
+    if letra == "E":
+        capitulo = "Capitulo IV  Enfermedades endocrinas, nutricionales y metabólicas"
+        if numcapitulo > 5:
+            mitad_base = base * 50 / 100
+            monto_descuento = (monto_final * 37 / 100)
+            if monto_descuento > mitad_base:
+                monto_final = monto_final - monto_descuento
+
+    elif letra == "F":
+        capitulo = "Capitulo V Trastornos mentales y del comportamiento"
+        if numcapitulo % 2 != 0:
+            mitad_base = base * 50 / 100
+            monto_descuento = (monto_final * 45 / 100)
+            if monto_descuento > mitad_base:
+                monto_final = monto_final - monto_descuento
+
+    return monto_final
 
 # Salida EXACTA
-print("Beneficiario:", beneficiario)
-print("Codigo:", codigo)
-print("Capitulo:", capitulo)
-print("Monto a pagar:", monto_final)
+
+
+
+# los valores llegan desde principal.py donde se llama al módulo y arranca con esta función principal
+#para poder hacer el "calculo normal" que seria el del TP1
+def principal(Cod_ICD10, monto_base):
+    codigo = Cod_ICD10
+    base = monto_base
+
+    letra, parte_decimal, porcentaje, numcapitulo = ExtraerDatosCodigo(codigo)
+
+    #a. Monto fijo que se agrega al base para todos los tratamientos: 25000 pesos.
+    monto = sumafijapuntoa(base)
+
+    monto = sumafijapuntob(monto, letra)
+
+    monto_final = aplicarporcentaje(monto, porcentaje)
+
+    # cambiar la lógica de la consigna extra, fue una solución a las apuradas
+    monto_final = consignaextra(letra, numcapitulo, monto_final)
+
+    # prints para testeo
+
+    print("Codigo:", codigo)
+    print("Capitulo:", numcapitulo)
+    print("Monto a pagar:", monto_final)
+
+    return beneficiario, codigo, capitulo, monto_final
+
+if __name__ == "__main__":
+    # Único punto de arranque si se ejecuta este archivo directamente, los valores son de ejemplo
+    print(principal("H70.1", "5200"))
+
 
