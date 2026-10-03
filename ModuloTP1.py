@@ -98,6 +98,6 @@ def principal(Cod_ICD10, monto_base):
 
 if __name__ == "__main__":
     # Único punto de arranque si se ejecuta este archivo directamente, los valores son de ejemplo
-    print(principal("H70.1", "5200"))
+    principal("H70.1", "5200")
 
 

@@ -20,27 +20,20 @@ import ModuloTP1
 
 
 
-#función que retorna el apellido del quinto paciente con tratamiento complejo
-def r1_2(v):
-    contador_r1_2 = 0
-    for t in v:
-        if t.ContTratamAComplejidad():
-            contador_r1_2 += 1
 
-        if contador_r1_2 >= 5:
-            return (t.apellido)
-    return False
+
 
 
 # acá calculo normal que remite al ModuloTP1
 def calculonormal(tratamiento):
-    #ModuloTP1.principal()
-    print("falta programar el cálculo normal")
+    codigo = tratamiento.icd10
+    monto_base = tratamiento.monto
+    monto_final_normal = ModuloTP1.principal(codigo, monto_base)
+    return monto_final_normal
 
-# el punto r2.1
-def r2_1(monto_base, monto_final):
-    r21 = 0
-    print("falta")
+
+
+
 
 
 
@@ -78,9 +71,21 @@ def CartaTratamientos():
     r1_1 = cantidad_tratamientos
     return r1_1, v
 
+#función que retorna el apellido del quinto paciente con tratamiento complejo
+def r1_2(v):
+    contador_r1_2 = 0
+    for t in v:
+        if t.ContTratamAComplejidad():
+            contador_r1_2 += 1
 
+        if contador_r1_2 >= 5:
+            return (t.apellido)
+    return False
 
-
+# el punto r2.1
+def r2_1(monto_base, monto_final):
+    r21 = 0
+    print("falta")
 
 
 # Función principal del menú de opciones del programa: se ejecuta esta primero por el control
