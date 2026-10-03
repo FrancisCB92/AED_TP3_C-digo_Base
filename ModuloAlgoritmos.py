@@ -34,9 +34,10 @@ LA CONSIGNA:
 def Algoritmo1(alta_complejidad, monto_base, ICD10):
     suma_fija = 0
     if monto_base > 60000:
+        print("salio mal")
         # no queda claro qué aplicar, qué parte del TP1: parece ser el punto e (el valor a la derecha del punto)
         # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
-        porcentaje_extra = aplicaporcentaje(monto_base, ICD10[4:])
+        porcentaje_extra = int(ICD10[4:])
 
         if alta_complejidad and ICD10[0] != "U":
             suma_fija = monto_base/2
@@ -68,22 +69,18 @@ def Algoritmo2(alta_complejidad, monto_base, ICD10):
     porcentaje_extra = 0
     if "A" <= ICD10[0] <= "P":
         # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
-        aplicaporcentaje(monto_base, ICD10[4:])
+        porcentaje_extra = int(ICD10[4:])
     else:
         if alta_complejidad:
-            porcentaje_extra = 2* int(ICD10[4:])
-
+            porcentaje_extra = 2 * int(ICD10[4:])
         else:
-            porcentaje_extra = aplicaporcentaje(monto_base, 15)
+            porcentaje_extra = 15
 
 
     monto_porcentaje = aplicaporcentaje(monto_base, porcentaje_extra)
 
     monto_final = monto_base + monto_porcentaje
     return monto_final
-
-
-
 
 
 """
@@ -106,7 +103,7 @@ def Algoritmo3 (alta_complejidad, monto_base, ICD10):
     monto_extra = 0
     if alta_complejidad:
         # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
-        aplicaporcentaje(monto_base, ICD10[4:])
+        aplicaporcentaje(monto_base, int(ICD10[4:]))
 
     if "A" <= ICD10[0] <= "L":
         monto_extra = monto_extra + 20000
@@ -119,10 +116,32 @@ def Algoritmo3 (alta_complejidad, monto_base, ICD10):
     if monto_extra > 60000:
         monto_extra = 60000
 
-    return monto_extra
+    monto_final = monto_base + monto_extra
+    return monto_final
 
 if __name__ == "__main__":
-    # pruebas
-    Algoritmo1(True, 37212.07, "C16.6")
-    Algoritmo2(False, 35248.57, "M15.2")
-    Algoritmo3(True, 29659.55, "F30.7")
+
+# PRUEBA ALGORITMO2
+    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 --->
+    # Algoritmo1(True, 41903.3, "I21.1")
+
+    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
+    # print(Algoritmo1(True, 59000.3, "I21.1"))
+
+    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
+    print(Algoritmo1(True, 59000.3, "I21.1"))
+
+
+# PRUEBA ALGORITMO2
+    # [*] 31947812, Jorge, Gimenez, B83.5, 37212.07, R, 2 ---> 39.072,6735
+    # print(Algoritmo2(False, 37212.07, "B83.5"))
+
+    # [*] 31947812, Jorge, Gimenez, Q83.5, 37212.07, A, 2 ---> 40.933,277
+    # print(Algoritmo2(True, 37212.07, "Q83.5"))
+
+    # [*] 31947812, Jorge, Gimenez, Q83.5, 37212.07, R, 2 ---> 42.793,8805
+    # print(Algoritmo2(False, 37212.07, "Q83.5"))
+
+
+# PRUEBA ALGORITMO3
+    #Algoritmo3(True, 29659.55, "F30.7")

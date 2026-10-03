@@ -11,12 +11,12 @@ en la FICHA 26 y no hay ejemplo. No encuentro usos de archivos con formato csv e
         de acuerdo a lo indicado en el TP2.
 [] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones?
 
---el ModuloTP1 es para adaptar los calculos de ese TP a esta trabajo practico, adaptandolo: doble testeo
-""
+--el ModuloTP1 es para adaptar los calculos de ese TP a este trabajo práctico, adaptándolo: doble testeo
 """
 
 # importamos los módulos
 import ModuloClase
+import ModuloAlgoritmos
 
 
 
@@ -57,10 +57,25 @@ def CargaTratamientos(v):
 def calculomontofinal(v):
     monto_final = 0
     monto_base = 0
-    for t in v:
-        print(t.id_alg)
-        print(t.monto)
+    cont_tratamiento = 0
+    acumulador_dif = 0
 
+    for t in v:
+        cont_tratamiento += 1
+        if int(t.id_alg) == 1:
+            monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
+        if int(t.id_alg) == 2:
+            monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
+        if int(t.id_alg) == 3:
+            monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
+        else:
+            print("acá es por cálculo del monto normal")
+
+        diferencia = monto_final - monto_base
+        acumulador_dif += diferencia
+
+    promedio = acumulador_dif/cont_tratamiento
+    return promedio
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
 def r1_2(v):
@@ -100,9 +115,9 @@ def principal():
 
         if op == 1:
             print("opcion 1 seleccionada")
-            r1_1, v = CargaTratamientos(v)
+            r11, v = CargaTratamientos(v)
             """r1.1: Cantidad de tratamientos cargados."""
-            print("r1.1: Cantidad de tratamientos cargados: " + str(r1_1))
+            print("r1.1: Cantidad de tratamientos cargados: " + str(r11))
 
             """r1.2: El apellido del paciente del quinto tratamiento de alta complejidad procesado. (Si
             no hubiera 5 tratamientos de alta complejidad, mostrar “No hay suficientes
