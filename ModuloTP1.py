@@ -1,6 +1,12 @@
 """
-[] errores de sintaxis ya no tiene, hay que prerapar pruebas, para testear la lógica
+[ ] ES NECESARIO ESTE MÓDULO PORQUE LA CONSIGNA ACLARA QUE EL CALCULO DE LOS MONTOS FINALES DEBE SER
+ NORMAL (TP1) SI NO ES UNO DE LOS TRES NUEVOS ALGORITMOS, ESTO NO QUIERE DECIR QUE EL LA DEERMINACION
+ DEL PORCENTAJE EXTRA NORMAL QUE APARECE EN LOS ALGORITMOS ES ESTE PT4 SEA ESTE MODULOTP1
+ (parece que sería la consigna <e> que es solo aplicar el valor después del punto.
 
+
+[ ] errores de sintaxis ya no tiene, hay que prerapar pruebas, para testear la lógica
+[ ] la función consignaextra() posiblemente no tenga sentido dejarla
 """
 
 beneficiario = ""
@@ -13,10 +19,9 @@ capitulo = ""
 def ExtraerDatosCodigo(codigo):
 
     letra = codigo[0]
-    parte_decimal = codigo[4:]
-    porcentaje = int(parte_decimal)
+    porcentaje = int(codigo[4:])
     numcapitulo = int(codigo[1:3])
-    return letra, parte_decimal, porcentaje, numcapitulo
+    return letra, porcentaje, porcentaje, numcapitulo
 
 
 # punto a) Cálculo del monto
@@ -85,8 +90,8 @@ def principal(Cod_ICD10, monto_base):
 
     monto_final = aplicarporcentaje(monto, porcentaje)
 
-    # cambiar la lógica de la consigna extra, fue una solución a las apuradas
-    monto_final = consignaextra(letra, numcapitulo, monto_final)
+    # posiblemente no tenga sentido dejar la consigna extra
+    # monto_final = consignaextra(letra, numcapitulo, monto_final)
 
     # prints para testeo
 

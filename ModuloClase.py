@@ -31,8 +31,7 @@ class Tratamiento:
         r += "\nid_alg: " + self.id_alg
         return r
 
-
-    def ContTratamAComplejidad(self):
+    def conttratamacomplejidad(self):
         if self.complejidad == "A":
             return True
         else:
