@@ -12,7 +12,7 @@ class Tratamiento:
         self.nombre = nombre
         self.apellido = apellido
         self.icd10 = icd10
-        self.monto = monto
+        self.monto = float(monto)
         self.complejidad = complejidad
         self.id_alg = id_alg
 
@@ -26,7 +26,7 @@ class Tratamiento:
         r += "\nnombre: " + self.nombre
         r += "\napellido: " + self.apellido
         r += "\nicd10: " + self.icd10
-        r += "\nmonto: "+ self.monto
+        r += "\nmonto: "+ str(self.monto)
         r += "\ncomplejidad: " + self.complejidad
         r += "\nid_alg: " + self.id_alg
         return r

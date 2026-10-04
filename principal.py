@@ -1,15 +1,15 @@
 """ PENDIENTES
 [ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos
 [ ] hay que cambiar la función strip() de CargaTratamientos, posiblemente se quejen, porque recien se usa
-en la FICHA 26 y no hay ejemplo. No encuentro usos de archivos con formato csv en las fichas.
-[ ] tema de lo que se puede usar y lo que no, hasta ficha 21: estructura básica tomada de los parciales
+en la FICHA 26 y no hay ejemplos en las anteriores. No encuentro usos de archivos con formato csv en las fichas.
+[ ] tema de lo que se puede usar y lo que no, traté de usar lo q figura hasta la ficha 21: estructuras básica tomadas de los parciales
  y ejemplos de las fichas
-[ ] todavía hay caracteres que hacen que la salida tenga saltos de línea parece, limpiar
+[ ] todavía hay caracteres que hacen que la salida tenga saltos de línea parece, limpiar la carga de datos en los objetos del vector v
 [ ] No queda clara la consigna cuando dice:
         Si el código de algoritmo informado para un tratamiento en el archivo csv NO ESTÁ en esta tabla,
         entonces el monto final para ese tratamiento debe ser calculado en forma normal,
         de acuerdo a lo indicado en el TP2.
-[] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones?
+[] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones? quedarón un modulo
 
 --el ModuloTP1 es para adaptar los calculos de ese TP a este trabajo práctico, adaptándolo: doble testeo
 """
@@ -23,11 +23,13 @@ import ModuloAlgoritmos
 def CargaTratamientos(v):
     print("función de opción 1 carga de tratamientos")
 
-    # solución provisoria para saltar la primera fila donde están las etiquetas de las columnas en el archivo CSV
-    cantidad_tratamientos = -1
+    cantidad_tratamientos = 0
 
     # con esto abrimos el archivo cvs
     m = open("tratamientos_prueba.cvs")
+
+    # salta el encabezado
+    m.readline()
 
     # para leer línea por línea y asignar los valores en variables y luego crear el objeto instanciado
     # desde la clase del módulo importado "ModuloClase.py"
@@ -40,6 +42,7 @@ def CargaTratamientos(v):
         # --parece que el formato de cada valor no está "limpio", hay que quitar los saltos de líneas (sin usar funciones que
         # no estén en las fichas del teórico, posiblemente el manejo de estos CSV se explicó en clases porque no aparecen en
         # las fichas.
+
         dni, nombre, apellido, icd10, monto, complejidad, id_alg = linea.split(",")
 
         v.append(ModuloClase.Tratamiento(cantidad_tratamientos,
@@ -69,21 +72,26 @@ def calculomontofinal(v):
     acumulador_dif = 0
 
     for t in v:
+        print("id: "+ str(t.id))
         cont_tratamiento += 1
         if int(t.id_alg) == 1:
+            print("aplica algoritmo 1")
             monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
-        if int(t.id_alg) == 2:
+        elif int(t.id_alg) == 2:
+            print("aplica algoritmo 2")
             monto_final = ModuloAlgoritmos.Algoritmo2(t.conttratamacomplejidad(), t.monto, t.icd10)
-        if int(t.id_alg) == 3:
+        elif int(t.id_alg) == 3:
+            print("aplica algoritmo 3")
             monto_final = ModuloAlgoritmos.Algoritmo3(t.conttratamacomplejidad(), t.monto, t.icd10)
         else:
-            print("acá es por cálculo del monto normal")
+            # falta implementación del TP1 para calculo normal del monto final
+            print("Falta implementación de cálculo del monto final de forma Normal: implementación del MóduloTP1")
 
         diferencia = monto_final - monto_base
         acumulador_dif += diferencia
 
-    promedio = acumulador_dif/cont_tratamiento
-    return promedio
+    promedio_r21 = acumulador_dif/cont_tratamiento
+    return promedio_r21
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
 def r1_2(v):
@@ -143,7 +151,6 @@ def principal():
                 calculomontofinal(v)
             else:
                 print("No hay tratamientos cargados")
-
 
 
 if __name__ == "__main__":
