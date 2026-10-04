@@ -73,9 +73,9 @@ def calculomontofinal(v):
         if int(t.id_alg) == 1:
             monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
         if int(t.id_alg) == 2:
-            monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
+            monto_final = ModuloAlgoritmos.Algoritmo2(t.conttratamacomplejidad(), t.monto, t.icd10)
         if int(t.id_alg) == 3:
-            monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
+            monto_final = ModuloAlgoritmos.Algoritmo3(t.conttratamacomplejidad(), t.monto, t.icd10)
         else:
             print("acá es por cálculo del monto normal")
 

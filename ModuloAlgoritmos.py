@@ -46,7 +46,6 @@ def Algoritmo1(alta_complejidad, monto_base, ICD10):
     monto_final = monto_base + monto_porcentaje + suma_fija
     return monto_final
 
-
 """
 LA CONSIGNA: 
         Si la letra del ICD10 está entre “A” y “P” (ambas incluidas), entonces
@@ -78,7 +77,6 @@ def Algoritmo2(alta_complejidad, monto_base, ICD10):
 
     monto_final = monto_base + monto_porcentaje
     return monto_final
-
 
 """
 LA CONSIGNA:
