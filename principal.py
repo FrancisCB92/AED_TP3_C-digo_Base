@@ -65,7 +65,7 @@ def CargaTratamientos(v):
 
 
 # función para calcular montos finales, de la 2da opción del menú
-def calculomontofinal(v):
+def calculomontofinalr21(v):
     monto_final = 0
     monto_base = 0
     cont_tratamiento = 0
@@ -93,6 +93,14 @@ def calculomontofinal(v):
     promedio_r21 = acumulador_dif/cont_tratamiento
     return promedio_r21
 
+
+def letracodmastratamiento_r22(v):
+
+    for t in v:
+        if t.icd10[0] in "ABCDEFGHIJKLMNÑOPQRSTUV":
+            print(t.icd10[0])
+
+
 #función que retorna el apellido del quinto paciente con tratamiento complejo
 def r1_2(v):
     contador_r1_2 = 0
@@ -105,14 +113,6 @@ def r1_2(v):
     return False
 
 
-
-# el punto r2.1: hay que calcular los montos finales
-def r2_1(v, montos_base, montos_finales):
-    r21 = 0
-    for t in v:
-        print(t)
-
-    print("hay que terminar con los algoritmos de calculo de montos finales antes")
 
 
 # Función principal del menú de opciones del programa: se ejecuta esta primero por el control
@@ -148,7 +148,7 @@ def principal():
         if op == 2:
             print("opción 2 seleccionada")
             if v:
-                calculomontofinal(v)
+                calculomontofinalr21(v)
             else:
                 print("No hay tratamientos cargados")
 
