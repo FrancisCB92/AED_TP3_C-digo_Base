@@ -1,15 +1,12 @@
 # PENDIENTES
-# [ ] falta control de ejecución con variable __name__
+# [ ] ¿Está bien implementado el control de ejecución con la variable __name__?
 # [ ] % calculado de forma normal? no queda claro si es que simplemente se procede como en el TP1 o sólo
 # se calcula el % de manera normal según el TP1 sin tener en cuenta por ej montos fijos del TP1
 # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
 
 
-
-
 # def CalcularPorcExtraNormal ()
 import ModuloTP1
-
 
 def aplicaporcentaje(base, porcentaje):
     monto_porcenaje = (base * porcentaje) / 100
@@ -34,12 +31,12 @@ LA CONSIGNA:
 def Algoritmo1(alta_complejidad, monto_base, ICD10):
     suma_fija = 0
     if monto_base > 60000:
-        print("salio mal")
-        # no queda claro qué aplicar, qué parte del TP1: parece ser el punto e (el valor a la derecha del punto)
-        # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
+        """ no queda claro qué aplicar, qué parte del TP1: parece ser el punto e (el valor a la derecha del punto)
+        "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)"""
         porcentaje_extra = int(ICD10[4:])
 
         if alta_complejidad and ICD10[0] != "U":
+            print("NOOOO!")
             suma_fija = monto_base/2
     else:
         porcentaje_extra = 0
@@ -99,17 +96,21 @@ LA CONSIGNA:
         Sea monto_final = monto_base + monto_extra
 """
 
-def Algoritmo3 (alta_complejidad, monto_base, ICD10):
+def Algoritmo3(alta_complejidad, monto_base, ICD10):
     monto_extra = 0
     if alta_complejidad:
-        # "calculo normal": "...el numero despuesta del punto..." (en Whatsapp + punto <e> del TP1)
-        aplicaporcentaje(monto_base, int(ICD10[4:]))
+        monto_extra += aplicaporcentaje(monto_base, 30)
+        print("alta complejidad + 30%: "+ str(monto_extra))
 
     if "A" <= ICD10[0] <= "L":
         monto_extra = monto_extra + 20000
+
     elif "M" <= ICD10[0] <= "P":
-        # bloque ICD10: ''... son los numeros después de la letra y antes del punto...'' (en grupo de Whatsapp)
+        print("entre M y P, + complenjidad: "+ str(alta_complejidad))
+        # en la consigna "<bloque ICD10>": ''... son los numeros después de la letra
+        # y antes del punto...'' (en grupo de Whatsapp)
         monto_extra = monto_extra + 15000 + 5000 * int(ICD10[1:3])
+        print(monto_extra)
     else:
         monto_extra = aplicaporcentaje(monto_base, 10)
 
@@ -119,17 +120,28 @@ def Algoritmo3 (alta_complejidad, monto_base, ICD10):
     monto_final = monto_base + monto_extra
     return monto_final
 
+
+
 if __name__ == "__main__":
 
-# PRUEBA ALGORITMO2
-    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 --->
-    # Algoritmo1(True, 41903.3, "I21.1")
 
-    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
+# PRUEBA ALGORITMO1
+    # [*] 41317524,Marta,Gomez,I21.2,41903.3,A,1 ---> 98.800,456
+    # print(Algoritmo1(True, 65000.3, "I21.2"))
+
+    # [*] 41317524,Marta,Gomez,I21.2,65000.3,R,1 ---> 66.300,306
+    # no es de alta complejidad y NO es "U"
+    # print(Algoritmo1(False, 65000.3, "I21.2"))
+
+    # [*] 41317524,Marta,Gomez,U21.2,65000.3,R,1 ---> 66.300,306
+    # no es de alta complejidad y es "U"
+    # print(Algoritmo1(False, 65000.3, "U21.2"))
+
+    # [*] 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
     # print(Algoritmo1(True, 59000.3, "I21.1"))
 
-    # 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
-    print(Algoritmo1(True, 59000.3, "I21.1"))
+    # [*] 41317524,Marta,Gomez,I21.1,41903.3,A,1 ---> 59000.3
+    # print(Algoritmo1(True, 59000.3, "I21.1"))
 
 
 # PRUEBA ALGORITMO2
@@ -144,4 +156,8 @@ if __name__ == "__main__":
 
 
 # PRUEBA ALGORITMO3
-    #Algoritmo3(True, 29659.55, "F30.7")
+    # [*] 41317524,Marta,Gomez,I21.2,41903.3,A,1 ---> 26500.0
+    # print(Algoritmo3(True, 5000, "B21.2"))
+
+    # [*] 41317524,Marta,Gomez,I21.2,41903.3,R,1 --->
+    print(Algoritmo3(False, 5000, "O21.2"))

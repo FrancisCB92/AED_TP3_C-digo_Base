@@ -19,21 +19,27 @@ import ModuloClase
 import ModuloAlgoritmos
 
 
-
+# función de la primera opción para cargar los tratamientos en el vector, tomando las filas del archivo CSV
 def CargaTratamientos(v):
     print("función de opción 1 carga de tratamientos")
+
+    # solución provisoria para saltar la primera fila donde están las etiquetas de las columnas en el archivo CSV
     cantidad_tratamientos = -1
+
+    # con esto abrimos el archivo cvs
     m = open("tratamientos_prueba.cvs")
-    #v = []  vector vacío como base de datos, sin longitud, usamos el metodo append() para ir sumando objetos/tratamientos
 
     # para leer línea por línea y asignar los valores en variables y luego crear el objeto instanciado
     # desde la clase del módulo importado "ModuloClase.py"
     for linea in m:
         cantidad_tratamientos += 1
 
-        # fila = línea
-        # cambiar la función split() probablemente no se puede usar, no está en las fichas
-        # la determinación de alta complejidad se determina con el metodo ContTratamAComplejidad()
+        # --Seguramente tenemos que cambiar la función split() probablemente no se puede usar, no está en las fichas
+        # la determinación de la "alta complejidad" del tratamiento procesado se determina con el metodo ContTratamAComplejidad()
+        # interno en cada objeto creado e incorporado a vector "v" que funciona como una base de datos (estructura de datos)
+        # --parece que el formato de cada valor no está "limpio", hay que quitar los saltos de líneas (sin usar funciones que
+        # no estén en las fichas del teórico, posiblemente el manejo de estos CSV se explicó en clases porque no aparecen en
+        # las fichas.
         dni, nombre, apellido, icd10, monto, complejidad, id_alg = linea.split(",")
 
         v.append(ModuloClase.Tratamiento(cantidad_tratamientos,
@@ -47,13 +53,15 @@ def CargaTratamientos(v):
 
     # dos ejemplos que muestran las dos primeras fijas ya como objetos dentro de vector que pide la consigna
     # llama al metodo especial __str__ para imprimir por  (de los modelos del Parcial3)
-    #print(v[1])
-    #print(v[2])
+    # print(v[1])
+    # print(v[2])
 
     # el primer resultado: cantidad de tratamientos cargados
     r1_1 = cantidad_tratamientos
     return r1_1, v
 
+
+# función para calcular montos finales, de la 2da opción del menú
 def calculomontofinal(v):
     monto_final = 0
     monto_base = 0
@@ -116,7 +124,7 @@ def principal():
         if op == 1:
             print("opcion 1 seleccionada")
             r11, v = CargaTratamientos(v)
-            """r1.1: Cantidad de tratamientos cargados."""
+            #r1.1: Cantidad de tratamientos cargados.
             print("r1.1: Cantidad de tratamientos cargados: " + str(r11))
 
             """r1.2: El apellido del paciente del quinto tratamiento de alta complejidad procesado. (Si
