@@ -66,10 +66,17 @@ def CargaTratamientos(v):
 
 
 def mayor_monto(v):
-    t_mont_mayor = v[0]
+    t_mont_mayor = None
     for t in v:
-        if t.monto_final > t_mont_mayor.monto_final:
+        if t.conttratamacomplejidad():
             t_mont_mayor = t
+            # print("el primero de alta complejidad")
+            break
+    for t in v:
+        if t.conttratamacomplejidad():
+            # print("es de alta complejidad")
+            if t.monto_final > t_mont_mayor.monto_final:
+                t_mont_mayor = t
     dni_t_monto_may = t_mont_mayor.dni
     return dni_t_monto_may
 
