@@ -42,7 +42,7 @@ def CargaTratamientos(v):
         # --parece que el formato de cada valor no está "limpio", hay que quitar los saltos de líneas (sin usar funciones que
         # no estén en las fichas del teórico, posiblemente el manejo de estos CSV se explicó en clases porque no aparecen en
         # las fichas.
-
+        monto_final = 0
         dni, nombre, apellido, icd10, monto, complejidad, id_alg = linea.split(",")
 
         v.append(ModuloClase.Tratamiento(cantidad_tratamientos,
@@ -51,6 +51,7 @@ def CargaTratamientos(v):
                                          apellido,
                                          icd10,
                                          monto,
+                                         monto_final,
                                          complejidad,
                                          id_alg))
 
@@ -64,6 +65,14 @@ def CargaTratamientos(v):
     return r1_1, v
 
 
+def mayor_monto(v):
+    t_mont_mayor = v[0]
+    for t in v:
+        if t.monto_final > t_mont_mayor.monto_final:
+            t_mont_mayor = t
+    dni_t_monto_may = t_mont_mayor.dni
+    return dni_t_monto_may
+
 # función para calcular montos finales, de la 2da opción del menú
 def calculomontofinalr21(v):
     monto_final = 0
@@ -72,33 +81,63 @@ def calculomontofinalr21(v):
     acumulador_dif = 0
 
     for t in v:
-        print("id: "+ str(t.id))
+        # print("id: "+ str(t.id))
         cont_tratamiento += 1
         if int(t.id_alg) == 1:
-            print("aplica algoritmo 1")
+            # print("aplica algoritmo 1")
             monto_final = ModuloAlgoritmos.Algoritmo1(t.conttratamacomplejidad(), t.monto, t.icd10)
         elif int(t.id_alg) == 2:
-            print("aplica algoritmo 2")
+            # print("aplica algoritmo 2")
             monto_final = ModuloAlgoritmos.Algoritmo2(t.conttratamacomplejidad(), t.monto, t.icd10)
         elif int(t.id_alg) == 3:
-            print("aplica algoritmo 3")
+            # print("aplica algoritmo 3")
             monto_final = ModuloAlgoritmos.Algoritmo3(t.conttratamacomplejidad(), t.monto, t.icd10)
         else:
             # falta implementación del TP1 para calculo normal del monto final
-            print("Falta implementación de cálculo del monto final de forma Normal: implementación del MóduloTP1")
+            # print("Falta implementación de cálculo del monto final de forma Normal: implementación del MóduloTP1")
+            monto_final = 1
+        t.monto_final = monto_final
+        # print(t.monto_final)
 
         diferencia = monto_final - monto_base
         acumulador_dif += diferencia
+
+
 
     promedio_r21 = acumulador_dif/cont_tratamiento
     return promedio_r21
 
 
 def letracodmastratamiento_r22(v):
+    lista = []
+    letras = []
+    cantidades = []
+
 
     for t in v:
-        if t.icd10[0] in "ABCDEFGHIJKLMNÑOPQRSTUV":
-            print(t.icd10[0])
+        lista.append(t.icd10[0])
+
+    for x in lista:
+        if x in letras:
+            pos = letras.index(x)
+            cantidades[pos] += 1
+        else:
+            letras.append(x)
+            cantidades.append(1)
+
+    # print(letras)  ]
+    # print(cantidades)
+
+    pos_mayor = 0
+    for i in range(len(cantidades)):
+        if cantidades[i] > cantidades[pos_mayor]:
+            pos_mayor = i
+
+    # print(letras[pos_mayor])
+
+    return letras[pos_mayor], cantidades[pos_mayor]
+
+
 
 
 #función que retorna el apellido del quinto paciente con tratamiento complejo
@@ -123,7 +162,7 @@ def principal():
 
     # Bucle principal del menú: se repite hasta seleccionar la opción 3.
     while op != 0:
-        print("1. Cargar Tratamientos")
+        print("\n\n1. Cargar Tratamientos")
         print("2. Mostrar Resultados")
         print("0. Salir")
 
@@ -133,7 +172,7 @@ def principal():
             print("opcion 1 seleccionada")
             r11, v = CargaTratamientos(v)
             #r1.1: Cantidad de tratamientos cargados.
-            print("r1.1: Cantidad de tratamientos cargados: " + str(r11))
+            print("r1.1: ", repr(r11))
 
             """r1.2: El apellido del paciente del quinto tratamiento de alta complejidad procesado. (Si
             no hubiera 5 tratamientos de alta complejidad, mostrar “No hay suficientes
@@ -142,15 +181,25 @@ def principal():
             if r12 == False:
                 print("r1.2: No hay suficientes tratamientos de alta complejidad")
             else:
-                print("r1.2: El apellido del 5to paciente con tratamiento complejo es: " + r12)
+                print("r1.2: ", r12)
 
 
         if op == 2:
             print("opción 2 seleccionada")
             if v:
+                r21 = calculomontofinalr21(v)
+                print("r2.1:", r21)
+                r22, r23 = letracodmastratamiento_r22(v)
+                print("r2.2:", r22)
+                print("r2.3:", r23)
                 calculomontofinalr21(v)
+                r24 = mayor_monto(v)
+                print("r2.4:", r24)
+
             else:
-                print("No hay tratamientos cargados")
+                print("************\n"
+                      "No hay tratamientos cargados"
+                      "\n************")
 
 
 if __name__ == "__main__":
