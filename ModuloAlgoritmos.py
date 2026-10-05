@@ -36,7 +36,7 @@ def Algoritmo1(alta_complejidad, monto_base, ICD10):
         porcentaje_extra = int(ICD10[4:])
 
         if alta_complejidad and ICD10[0] != "U":
-            print("NOOOO!")
+            # print("NOOOO!")
             suma_fija = monto_base/2
     else:
         porcentaje_extra = 0
@@ -98,17 +98,17 @@ def Algoritmo3(alta_complejidad, monto_base, ICD10):
     monto_extra = 0
     if alta_complejidad:
         monto_extra += aplicaporcentaje(monto_base, 30)
-        print("alta complejidad + 30%: "+ str(monto_extra))
+        # print("alta complejidad + 30%: "+ str(monto_extra))
 
     if "A" <= ICD10[0] <= "L":
         monto_extra = monto_extra + 20000
 
     elif "M" <= ICD10[0] <= "P":
-        print("entre M y P, + complenjidad: "+ str(alta_complejidad))
+        # print("entre M y P, + complenjidad: "+ str(alta_complejidad))
         # en la consigna "<bloque ICD10>": ''... son los numeros después de la letra
         # y antes del punto...'' (en grupo de Whatsapp)
         monto_extra = monto_extra + 15000 + 5000 * int(ICD10[1:3])
-        print(monto_extra)
+        #print(monto_extra)
     else:
         monto_extra = aplicaporcentaje(monto_base, 10)
 

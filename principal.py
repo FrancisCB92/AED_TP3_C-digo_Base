@@ -1,16 +1,11 @@
 """ PENDIENTES
-[ ] Tiene la estructura del Parcial 3, en el módulo crear las clases y añadir las funciones como métodos
 [ ] hay que cambiar la función strip() de CargaTratamientos, posiblemente se quejen, porque recien se usa
 en la FICHA 26 y no hay ejemplos en las anteriores. No encuentro usos de archivos con formato csv en las fichas.
-[ ] tema de lo que se puede usar y lo que no, traté de usar lo q figura hasta la ficha 21: estructuras básica tomadas de los parciales
- y ejemplos de las fichas
-[ ] todavía hay caracteres que hacen que la salida tenga saltos de línea parece, limpiar la carga de datos en los objetos del vector v
+
 [ ] No queda clara la consigna cuando dice:
         Si el código de algoritmo informado para un tratamiento en el archivo csv NO ESTÁ en esta tabla,
         entonces el monto final para ese tratamiento debe ser calculado en forma normal,
         de acuerdo a lo indicado en el TP2.
-[] ¿Dónde colocar las funciones/algoritmos? cómo métodos o como un módulo de funciones? quedarón un modulo
-
 --el ModuloTP1 es para adaptar los calculos de ese TP a este trabajo práctico, adaptándolo: doble testeo
 """
 
@@ -26,7 +21,7 @@ def CargaTratamientos(v):
     cantidad_tratamientos = 0
 
     # con esto abrimos el archivo cvs
-    m = open("tratamientos_prueba.cvs")
+    m = open("tratamientos.csv")
 
     # salta el encabezado
     m.readline()
@@ -65,7 +60,7 @@ def CargaTratamientos(v):
     return r1_1, v
 
 
-def mayor_monto(v):
+def mayor_monto_final_dni(v):
     t_mont_mayor = None
     for t in v:
         if t.conttratamacomplejidad():
@@ -200,7 +195,7 @@ def principal():
                 print("r2.2:", r22)
                 print("r2.3:", r23)
                 calculomontofinalr21(v)
-                r24 = mayor_monto(v)
+                r24 = mayor_monto_final_dni(v)
                 print("r2.4:", r24)
 
             else:
